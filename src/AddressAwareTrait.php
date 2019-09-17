@@ -1,22 +1,21 @@
 <?php
 namespace Germania\Addresses;
 
-trait AddressAwareTrait 
+trait AddressAwareTrait
 {
-	use AddressProviderTrait;
+    use AddressProviderTrait;
 
 
-	/**
-	 * @param AddressProviderInterface|null $address
-	 */
-	public function setAddress( ?AddressProviderInterface $address) : self
-	{
-		if ($address instanceOf AddressInterface):	
-			$this->address = $address;
-		else:
-			$this->address = $address->getAddress();
-		endif;
+    /**
+     * @param AddressProviderInterface|null $address
+     */
+    public function setAddress(?AddressProviderInterface $address) : self
+    {
+        if ($address instanceof AddressInterface):
+            $this->address = $address; else:
+            $this->address = $address->getAddress();
+        endif;
 
-		return $this;	
-	}
+        return $this;
+    }
 }
