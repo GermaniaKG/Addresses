@@ -3,9 +3,6 @@ namespace tests;
 
 use Germania\Addresses\AddressFactory;
 use Germania\Addresses\AddressInterface;
-use Germania\Addresses\AddressProviderInterface;
-use Germania\Addresses\Address;
-use Germania\Addresses\AddressAbstract;
 
 class AddressFactoryTest extends \PHPUnit\Framework\TestCase
 {
