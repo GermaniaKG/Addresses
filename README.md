@@ -6,6 +6,16 @@
 
 # Germania KG · Addresses
 
+
+[![Packagist](https://img.shields.io/packagist/v/germania-kg/addresses.svg?style=flat)](https://packagist.org/packages/germania-kg/addresses)
+[![PHP version](https://img.shields.io/packagist/php-v/germania-kg/addresses.svg)](https://packagist.org/packages/germania-kg/addresses)
+[![Build Status](https://img.shields.io/travis/GermaniaKG/Addresses.svg?label=Travis%20CI)](https://travis-ci.org/GermaniaKG/Addresses)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GermaniaKG/Addresses/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Addresses/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/GermaniaKG/Addresses/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Addresses/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/GermaniaKG/Addresses/badges/build.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Addresses/build-status/master)
+
+
+
 ## Installation
 
 ```bash
@@ -84,16 +94,31 @@ print_r( $obj->getAddress() );
 ```
 
 
+## Issues
 
-## Development and testing
+See [full issues list.][i0]
+
+[i0]: https://github.com/GermaniaKG/Addresses/issues
+
+## Roadmap
+Fill in planned or desired features
+
+
+## Development
 
 ```bash
-# Just the PHP Unit test
-$ compsoer phpunit
+$ git clone https://github.com/GermaniaKG/Addresses.git
+$ cd Addresses
+$ composer install
+```
 
-# Code style and Unit tests
-$ composer phpcs
-$ composer phpcs-apply
+## Unit tests
+
+Either copy `phpunit.xml.dist` to `phpunit.xml` and adapt to your needs, or leave as is. Run [PhpUnit](https://phpunit.de/) test or composer scripts like this:
+
+```bash
 $ composer test
+# or
+$ vendor/bin/phpunit
 ```
 
