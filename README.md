@@ -6,6 +6,12 @@
 
 # Germania KG · Addresses
 
+## Installation
+
+```bash
+$ composer require germania-kg/addresses
+```
+
 
 
 ## Interfaces and Traits
