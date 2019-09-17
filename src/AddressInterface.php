@@ -1,7 +1,7 @@
 <?php
 namespace Germania\Addresses;
 
-interface AddressInterface extends \JsonSerializable
+interface AddressInterface extends AddressProviderInterface
 {
 
 	/**

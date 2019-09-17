@@ -7,11 +7,16 @@ trait AddressAwareTrait
 
 
 	/**
-	 * @param AddressInterface|null $address
+	 * @param AddressProviderInterface|null $address
 	 */
-	public function setAddress( ?AddressInterface $address) : self
+	public function setAddress( ?AddressProviderInterface $address) : self
 	{
-		$this->address = $address;
+		if ($address instanceOf AddressInterface):	
+			$this->address = $address;
+		else:
+			$this->address = $address->getAddress();
+		endif;
+
 		return $this;	
 	}
 }

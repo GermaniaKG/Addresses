@@ -18,25 +18,29 @@
       }
   },
 
-    "autoload-dev": {
-        "psr-4": { "tests\\": "tests/src" }
-    },
+  "require": {
+    "php": "^7.2"
+  },
 
-    "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.12",      
-        "php-coveralls/php-coveralls": "^2.0",
-        "phpunit/phpunit": "^7.0|^8.0",
-        "spatie/phpunit-watcher": "^1.8"
-    },
-    
-    "scripts": {
-        "phpcs":       "php-cs-fixer fix --verbose --diff --dry-run src/",
-        "phpcs-apply": "php-cs-fixer fix --verbose --diff src/",
-        "phpunit": "phpunit --colors=auto --coverage-text",
-        "watch": "phpunit-watcher watch",
-        "test": [
-            "@phpcs",
-            "@phpunit"
-        ]
+  "autoload-dev": {
+      "psr-4": { "tests\\": "tests/src" }
+  },
+
+  "require-dev": {
+      "friendsofphp/php-cs-fixer": "^2.12",      
+      "php-coveralls/php-coveralls": "^2.0",
+      "phpunit/phpunit": "^7.0|^8.0",
+      "spatie/phpunit-watcher": "^1.8"
+  },
+  
+  "scripts": {
+      "phpcs":       "php-cs-fixer fix --verbose --diff --dry-run src/",
+      "phpcs-apply": "php-cs-fixer fix --verbose --diff src/",
+      "phpunit": "phpunit --colors=auto --coverage-text",
+      "watch": "phpunit-watcher watch",
+      "test": [
+          "@phpcs",
+          "@phpunit"
+      ]
     }
 }
