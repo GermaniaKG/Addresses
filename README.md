@@ -1,3 +1,9 @@
+<img src="https://static.germania-kg.com/logos/ga-logo-2016-web.svgz" width="250px">
+
+------
+
+
+
 # Germania KG · Addresses
 
 
@@ -76,6 +82,12 @@ print_r( $obj->getAddress() );
 ## Development and testing
 
 ```bash
+# Just the PHP Unit test
+$ compsoer phpunit
+
+# Code style and Unit tests
+$ composer phpcs
+$ composer phpcs-apply
 $ composer test
 ```
 
