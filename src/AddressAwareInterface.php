@@ -7,5 +7,5 @@ interface AddressAwareInterface extends AddressProviderInterface
     /**
      * @param AddressProviderInterface|null $address
      */
-    public function setAddress(?AddressProviderInterface $address) : self;
+    public function setAddress(?AddressProviderInterface $address);
 }
