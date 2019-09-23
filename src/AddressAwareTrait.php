@@ -9,10 +9,11 @@ trait AddressAwareTrait
     /**
      * @param AddressProviderInterface|null $address
      */
-    public function setAddress(?AddressProviderInterface $address) : self
+    public function setAddress(?AddressProviderInterface $address)
     {
         if ($address instanceof AddressInterface):
-            $this->address = $address; else:
+            $this->address = $address; 
+        else:
             $this->address = $address->getAddress();
         endif;
 
