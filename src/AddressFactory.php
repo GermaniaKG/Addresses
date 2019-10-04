@@ -1,6 +1,22 @@
 <?php
 namespace Germania\Addresses;
 
+
+/**
+ * Creates AddressInterface instances from an associative array.
+ *
+ * Example:
+ *
+ *     <?php
+ *     $factory = (new AddressFactory)([
+ *       'street1'  => 'Street name 1',
+ *       'street2'  => null,
+ *       'zip'      => 'DG2JQ',
+ *       'location' => 'Dumfries',
+ *       'country'  => 'Scotland'
+ *     ]);
+ *
+ */
 class AddressFactory
 {
     public $php_address_class;
