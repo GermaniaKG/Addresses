@@ -38,6 +38,10 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         $value = "foo";
 
+        $this->assertNotEquals( $sut->getType(), $value);
+        $sut->setType( $value );
+        $this->assertEquals( $value, $sut->getType());
+
         $this->assertNotEquals( $sut->getStreet1(), $value);
         $sut->setStreet1( $value );
         $this->assertEquals( $value, $sut->getStreet1());

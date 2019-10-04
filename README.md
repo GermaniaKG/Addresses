@@ -42,6 +42,7 @@ echo $address->getStreet2();
 echo $address->getZip();
 echo $address->getLocation();
 echo $address->getCountry();
+echo $address->getType();
 
 // Setters accept string or null,
 // returning fluent interface.
@@ -49,7 +50,8 @@ $address->setStreet1( $new_street_1 )
   ->setStreet2( $new_street_2 )
   ->setZip( $new_zip ) 
   ->setLocation( $new_location )
-  ->setsetCountry( $new_country );
+  ->setsetCountry( $new_country )
+  ->setType( $new_type );
 ```
 
 The **Adress** class also implements the **AddressProviderInterface**, returning itself:
@@ -71,6 +73,7 @@ use Germania\Address;
 
 $factory = new AddressFactory;
 $address = $factory([
+  'type'     => 'office',
   'street1'  => 'Street name 1',
   'street2'  => null,
   'zip'      => 'DG2JQ',
@@ -83,16 +86,13 @@ The factory creates per default **Address** instances; the concrete class used c
 
 ```php
 // Given a custom implementation
+// and $address_data from database
 class CustomAddress extends Address {}
 
+$address_data = array( ... );
+
 $factory = new AddressFactory( CustomAddress::class );
-$address = $factory([
-  'street1'  => 'Street name 1',
-  'street2'  => null,
-  'zip'      => 'DG2JQ',
-  'location' => 'Dumfries',
-  'country'  => 'Scotland'
-]);
+$address = $factory( $address_data );
 
 echo get_class( $address ); // CustomAddress
 ```

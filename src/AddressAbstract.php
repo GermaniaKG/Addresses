@@ -7,6 +7,11 @@ abstract class AddressAbstract implements AddressInterface
     /**
      * @var string
      */
+    public $type;
+
+    /**
+     * @var string
+     */
     public $street1;
 
     /**
@@ -30,6 +35,14 @@ abstract class AddressAbstract implements AddressInterface
     public $country;
 
 
+
+    /**
+     * @inheritDoc
+     */
+    public function getType()  : ?string
+    {
+        return $this->type;
+    }
 
     /**
      * @inheritDoc
