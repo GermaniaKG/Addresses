@@ -59,9 +59,13 @@ class AddressFactory
     {
         $address = $address_provider->getAddress();
 
-        if (!$address and $address_provider instanceOf AddressAwareInterface):
+        if (!$address):
             $address = new $this->php_address_class;
-            $address_provider->setAddress($address);
+            if ($address_provider instanceOf AddressAwareInterface):
+                $address_provider->setAddress($address);
+            else:
+                $address_provider->address = $address;
+            endif;
         endif;
 
         $raw = array_merge($this->default_data, $address_data ?: array());

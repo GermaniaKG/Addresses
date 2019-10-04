@@ -50,15 +50,21 @@ class AddressFactoryTest extends \PHPUnit\Framework\TestCase
         $new_data = array(
             'street1' => "New Street"
         );
-        $address_provider = $this->prophesize( AddressAwareInterface::class );
-        $address_provider->getAddress()->willReturn( null );
-        $address_provider->setAddress( Argument::any() )->shouldBeCalled();
 
-        $address_provider_stub = $address_provider->reveal();
+
+        $address_aware_provider = $this->prophesize( AddressAwareInterface::class );
+        $address_aware_provider->getAddress()->willReturn( null );
+        $address_aware_provider->setAddress( Argument::any() )->shouldBeCalled();
+        $address_aware_provider_stub = $address_aware_provider->reveal();
 
         $address = new Address;
 
+        $address_provider = $this->prophesize( AddressProviderInterface::class );
+        $address_provider->getAddress()->willReturn( null );
+        $address_provider_stub = $address_provider->reveal();
+
         return array(
+            [ $address_aware_provider_stub, $new_data ],
             [ $address_provider_stub, $new_data ],
             [ $address, $new_data ]
         );        
