@@ -38,6 +38,7 @@ class AddressFactory
     public function __invoke(array $address_data = array()) : AddressInterface
     {
         $raw = array_merge(array(
+            'type'     => null,
             'street1'  => null,
             'street2'  => null,
             'zip'      => null,
@@ -51,7 +52,8 @@ class AddressFactory
                  ->setStreet2($raw['street2'])
                  ->setZip($raw['zip'])
                  ->setLocation($raw['location'])
-                 ->setCountry($raw['country']);
+                 ->setCountry($raw['country'])
+                 ->setType($raw['type']);
 
         return $address;
     }

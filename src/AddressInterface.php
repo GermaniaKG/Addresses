@@ -7,6 +7,11 @@ interface AddressInterface extends AddressProviderInterface
     /**
      * @return string|null
      */
+    public function getType()  : ?string;
+    
+    /**
+     * @return string|null
+     */
     public function getStreet1()  : ?string;
     
     /**

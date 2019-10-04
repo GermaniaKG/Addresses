@@ -14,6 +14,17 @@ class Address extends AddressAbstract implements AddressInterface, AddressProvid
 
 
     /**
+     * @param string $type|null
+     * @return self Fluent interface
+     */
+    public function setType(?string $type)  : self
+    {
+        $this->type = $type;
+        return $this;
+    }
+    
+
+    /**
      * @param string $street1|null
      * @return self Fluent interface
      */

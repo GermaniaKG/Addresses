@@ -13,6 +13,7 @@ class AddressAbstractTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf( AddressInterface::class, $mock);
 
+        $this->assertObjectHasAttribute('type',     $mock);
         $this->assertObjectHasAttribute('street1',  $mock);
         $this->assertObjectHasAttribute('street2',  $mock);
         $this->assertObjectHasAttribute('zip',      $mock);
@@ -29,6 +30,10 @@ class AddressAbstractTest extends \PHPUnit\Framework\TestCase
     public function testPropertySetting( $address_abstract )
     {
         $value = "foo";
+
+        $this->assertNotEquals( $address_abstract->getType(), $value);
+        $address_abstract->type = $value;
+        $this->assertEquals( $value, $address_abstract->getType());
 
         $this->assertNotEquals( $address_abstract->getStreet1(), $value);
         $address_abstract->street1 = $value;
