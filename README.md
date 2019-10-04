@@ -63,7 +63,7 @@ $adr2 === $address; // true
 
 
 
-### Using a factory
+### Create using a factory
 
 The **AddressFactory** class is callable and accepts associative arrays.
 
@@ -95,6 +95,36 @@ $factory = new AddressFactory( CustomAddress::class );
 $address = $factory( $address_data );
 
 echo get_class( $address ); // CustomAddress
+```
+
+### Update Addess instances using the factory
+
+The factory also has an **apply** method that aims at *AddressProviderInterface* instances. It will apply the information given with the array parameter:
+
+```php
+<?php
+use Germania\Address\AddressFactory;
+use Germania\Address\AddressProviderInterface;
+use Germania\Address\Address;
+
+// Custom AddressProviderInterface implementation
+class MyAddressProvider implements AddressProviderInterface
+{ };
+
+$address_provider = new MyAddressProvider;
+$factory = new AddressFactory;
+
+$address_provider = $factory->apply($provider_address, [
+	'street1' => 'Updated information'
+]);
+```
+
+Remember, class *Address* also implements *AddressProviderInterface*!
+
+```php
+$old_address = new Address;
+$new_address = factory->apply(old_address, new_address_data);
+echo get_class( $new_address ); // Address
 ```
 
 
