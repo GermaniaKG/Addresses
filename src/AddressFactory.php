@@ -59,6 +59,11 @@ class AddressFactory
     {
         $address = $address_provider->getAddress();
 
+        if (!$address and $address_provider instanceOf AddressAwareInterface):
+            $address = new $this->php_address_class;
+            $address_provider->setAddress($address);
+        endif;
+
         $raw = array_merge($this->default_data, $address_data ?: array());
 
         $address->setStreet1(   $raw['street1'])
@@ -68,6 +73,8 @@ class AddressFactory
                  ->setCountry(  $raw['country'])
                  ->setType(     $raw['type']);
 
-        return $address;
+
+
+        return $address_provider;
     }
 }
