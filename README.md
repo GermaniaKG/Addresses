@@ -24,7 +24,7 @@ $ composer require germania-kg/addresses
 
 
 
-## Interfaces and Traits
+## Usage
 
 ### AddressInterface and Address Class
 
@@ -42,6 +42,14 @@ echo $address->getStreet2();
 echo $address->getZip();
 echo $address->getLocation();
 echo $address->getCountry();
+
+// Setters accept string or null,
+// returning fluent interface.
+$address->setStreet1( $new_street_1 )
+  ->setStreet2( $new_street_2 )
+  ->setZip( $new_zip ) 
+  ->setLocation( $new_location )
+  ->setsetCountry( $new_country );
 ```
 
 The **Adress** class also implements the **AddressProviderInterface**, returning itself:
@@ -49,6 +57,44 @@ The **Adress** class also implements the **AddressProviderInterface**, returning
 ```php
 $adr2 = $address->getAddress();
 $adr2 === $address; // true
+```
+
+
+
+### Using a factory
+
+The **AddressFactory** class is callable and accepts associative arrays.
+
+```php
+<?php
+use Germania\Address;
+
+$factory = new AddressFactory;
+$address = $factory([
+  'street1'  => 'Street name 1',
+  'street2'  => null,
+  'zip'      => 'DG2JQ',
+  'location' => 'Dumfries',
+  'country'  => 'Scotland'
+]);
+```
+
+The factory creates per default **Address** instances; the concrete class used can be configured via constructor setting:
+
+```php
+// Given a custom implementation
+class CustomAddress extends Address {}
+
+$factory = new AddressFactory( CustomAddress::class );
+$address = $factory([
+  'street1'  => 'Street name 1',
+  'street2'  => null,
+  'zip'      => 'DG2JQ',
+  'location' => 'Dumfries',
+  'country'  => 'Scotland'
+]);
+
+echo get_class( $address ); // CustomAddress
 ```
 
 
