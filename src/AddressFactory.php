@@ -21,6 +21,14 @@ class AddressFactory
 {
     public $php_address_class;
 
+    public $default_data = array(
+        'type'     => null,
+        'street1'  => null,
+        'street2'  => null,
+        'zip'      => null,
+        'location' => null,
+        'country'  => null,
+    );
 
     /**
      * @param string|null $address_class
@@ -37,23 +45,28 @@ class AddressFactory
      */
     public function __invoke(array $address_data = array()) : AddressInterface
     {
-        $raw = array_merge(array(
-            'type'     => null,
-            'street1'  => null,
-            'street2'  => null,
-            'zip'      => null,
-            'location' => null,
-            'country'  => null,
-        ), $address_data);
-
         $address = new $this->php_address_class;
+        return $this->apply($address, $address_data);
+    }
 
-        $address->setStreet1($raw['street1'])
-                 ->setStreet2($raw['street2'])
-                 ->setZip($raw['zip'])
-                 ->setLocation($raw['location'])
-                 ->setCountry($raw['country'])
-                 ->setType($raw['type']);
+
+    /**
+     * @param  AddressProviderInterface $address_provider
+     * @param  array|null               $address_data
+     * @return AddressProviderInterface
+     */
+    public function apply(AddressProviderInterface $address_provider, array $address_data = null): AddressProviderInterface
+    {
+        $address = $address_provider->getAddress();
+
+        $raw = array_merge($this->default_data, $address_data ?: array());
+
+        $address->setStreet1(   $raw['street1'])
+                 ->setStreet2(  $raw['street2'])
+                 ->setZip(      $raw['zip'])
+                 ->setLocation( $raw['location'])
+                 ->setCountry(  $raw['country'])
+                 ->setType(     $raw['type']);
 
         return $address;
     }
