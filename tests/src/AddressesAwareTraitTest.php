@@ -53,4 +53,5 @@ class AddressesAwareTraitTest extends \PHPUnit\Framework\TestCase
 			[ 22 ]
 		);
 	}
+
 }

@@ -21,9 +21,6 @@ trait AddressesAwareTrait
 		elseif ($addresses instanceOf \Traversable):
 			$this->addresses = new AddressesCollection( iterator_to_array($addresses ));			
 
-		else:
-			throw new \InvalidArgumentException( "AddressesCollectionInterface or Array or Traversable expected"); 
-
 		endif; 
 
 		return $this;
