@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="PHPUNIT">
+
+	<table_data name="addresses">
+	<row>
+		<field name="id">1</field>
+		<field name="type" xsi:nil="true" />
+		<field name="street1">Musterstraße 1</field>
+		<field name="street2">Hinterhof</field>
+		<field name="zip">12345</field>
+		<field name="location">Musterstadt</field>
+		<field name="country">Germany</field>
+	</row>
+	</table_data>
+</database>
+</mysqldump>

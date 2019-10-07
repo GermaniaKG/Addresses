@@ -70,12 +70,12 @@ class AddressFactory
 
         $raw = array_merge($this->default_data, $address_data ?: array());
 
-        $address->setStreet1(   $raw['street1'])
-                 ->setStreet2(  $raw['street2'])
-                 ->setZip(      $raw['zip'])
-                 ->setLocation( $raw['location'])
-                 ->setCountry(  $raw['country'])
-                 ->setType(     $raw['type']);
+        $address->setStreet1(  $raw['street1'])
+                ->setStreet2(  $raw['street2'])
+                ->setZip(      $raw['zip'])
+                ->setLocation( $raw['location'])
+                ->setCountry(  $raw['country'])
+                ->setType(     $raw['type']);
 
 
 
