@@ -1,7 +1,7 @@
 <?php
 namespace Germania\Addresses;
 
-interface AddressesCollectionInterface extends \Iterator 
+interface AddressesCollectionInterface extends \Iterator, \Countable 
 {
 
 	/**
