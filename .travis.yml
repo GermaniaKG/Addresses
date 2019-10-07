@@ -14,7 +14,7 @@ services:
 
 before_install:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
-  - mysql -u root -p test < tests/mysql_database.sql.txt
+  - mysql -u root test < tests/mysql_database.sql.txt
 
 before_script:
   - rm composer.lock
