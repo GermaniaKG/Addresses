@@ -1,0 +1,11 @@
+CREATE TABLE `addresses` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `type` varchar(16) DEFAULT NULL,
+  `street1` varchar(256) DEFAULT NULL,
+  `street2` varchar(256) DEFAULT NULL,
+  `zip` varchar(16) DEFAULT NULL,
+  `location` varchar(256) DEFAULT NULL,
+  `country` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+

@@ -18,6 +18,14 @@
 		</whitelist>
 	</filter>
 
+	<php>
+		<var name="DB_DSN"    value="mysql:host=127.0.0.1;dbname=test;charset=utf8" />
+		<var name="DB_USER"   value="root" />
+		<var name="DB_PASSWD" value="" />
+		<var name="DB_DBNAME" value="test" />
+		<var name="DB_TABLE"  value="addresses" />
+	</php>
+
 	<logging>
 		<log type="coverage-text"   target="php://stdout" showUncoveredFiles="true" />
 		<log type="coverage-clover" target="tests/logs/clover.xml"/>
