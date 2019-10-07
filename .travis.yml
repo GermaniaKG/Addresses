@@ -9,6 +9,13 @@ php:
 
 env:
 
+services:
+  - mysql
+
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
+  - mysql -u root -p test < tests/mysql_database.sql
+
 before_script:
   - rm composer.lock
   - composer self-update
