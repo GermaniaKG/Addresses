@@ -12,7 +12,7 @@ build:
     tests:
         before:
             - mysql -h 127.0.0.1 -u root -e 'create database test'
-            - mysql -u root -p test < tests/mysql_database.sql
+            - mysql -u root -p test < tests/mysql_database.sql.txt
 
         override:
             -
