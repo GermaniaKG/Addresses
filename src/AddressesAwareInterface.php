@@ -7,5 +7,5 @@ interface AddressesAwareInterface extends AddressesProviderInterface
 	/**
 	 * @param iterable $addresses
 	 */
-	public function setAddresses(iterable $addresses) : self;
+	public function setAddresses(iterable $addresses) : AddressesAwareInterface;
 }
