@@ -22,6 +22,40 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
 
     /**
+     * @dataProvider provideAddressFragments
+     */
+    public function testAddressEmpty( $s1, $s2, $z, $l, $expected_result)
+    {
+        $sut = new Address;
+        $this->assertTrue( $sut->isEmpty() );
+
+        $sut->setStreet1( $s1 );
+        $sut->setStreet2( $s2 );
+        $sut->setZip( $z );
+        $sut->setLocation( $l );
+
+        $this->assertEquals($sut->isEmpty(), $expected_result);
+    }
+
+    public function provideAddressFragments()
+    {
+        return array(
+            [ "",    "",   "",   "",     true],
+            [ false, "",   "",   "",     true],
+            [ "",    null, "",   "",     true],
+            [ "",    "",   null, "",     true],
+            [ "",    "",   "",   false,  true],
+
+            [ "a", "", "", "", false],
+            [ "", "a", "", "", false],
+            [ "", "", "b", "", false],
+            [ "", "", "", "c", false],
+        );
+    }
+
+
+
+    /**
      * @depends testInstantiation
      */
     public function testAddressProviderInterface( $sut )
@@ -45,6 +79,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         $this->assertNotEquals( $sut->getStreet1(), $value);
         $sut->setStreet1( $value );
         $this->assertEquals( $value, $sut->getStreet1());
+        $this->assertFalse( $sut->isEmpty());
 
         $this->assertNotEquals( $sut->getStreet2(), $value);
         $sut->setStreet2( $value );

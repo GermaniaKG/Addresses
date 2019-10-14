@@ -77,4 +77,14 @@ class Address extends AddressAbstract implements AddressInterface, AddressProvid
         $this->country = $country;
         return $this;
     }
+
+    /**
+     * @return inheritDoc
+     */
+    public function isEmpty() : bool {
+        return (empty( trim($this->street1) )
+           and empty( trim($this->street2) )
+           and empty( trim($this->zip) )
+           and empty( trim($this->location) ));
+    }    
 }
