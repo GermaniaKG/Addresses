@@ -44,6 +44,9 @@ echo $address->getLocation();
 echo $address->getCountry();
 echo $address->getType();
 
+// Depending on street1/street2, zip, and location
+echo $address->isEmpty() ? "empty" : "has address data";
+
 // Setters accept string or null,
 // returning fluent interface.
 $address->setStreet1( $new_street_1 )
