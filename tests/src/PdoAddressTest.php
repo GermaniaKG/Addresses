@@ -14,7 +14,9 @@ class PdoAddressTest extends \PHPUnit\Framework\TestCase
         $sut = new PdoAddress;
 
         $this->assertInstanceOf( AddressInterface::class, $sut);
+
         $this->assertNull( $sut->getId() );
+        $this->assertEquals( 42, $sut->setId( 42)->getId() );
 
         return $sut;
     }
