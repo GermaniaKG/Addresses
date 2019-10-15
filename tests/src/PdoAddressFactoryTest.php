@@ -34,18 +34,25 @@ class PdoAddressFactoryTest extends \PHPUnit\Framework\TestCase
 
 	public function testInvokation()
 	{
-		$address = $this->prophesize(PdoAddressInterface::class);
-		$address_stub = $address->reveal();
-
-		$stmt = $this->createPdoStatementStub( true, $address_stub );
+		$id = 22;
+		$stmt = $this->createPdoStatementStub( true, [
+			'id' => $id,
+			'street1'  => "foo",
+			'street2'  => "foo",
+			'zip'      => "01234",
+			'location' => "Westminster",
+			'country'  => "DE",
+		]);
 		$pdo = $this->createPdoStub( $stmt );
 
 		$sut = new PdoAddressFactory($pdo, "table_name");
 
-		$address_result = $sut(22);
+		$address_result = $sut( $id );
 		$this->assertInstanceOf(PdoAddressInterface::class, $address_result);
-		$this->assertEquals($address_result, $address_stub);
+		$this->assertEquals($address_result->getId(), $id);
 	}
+
+
 
 	public function testExceptionInvokation()
 	{
