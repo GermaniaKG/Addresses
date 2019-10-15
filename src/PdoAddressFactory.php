@@ -30,14 +30,14 @@ class PdoAddressFactory
 	 */
 	public function __construct( \PDO $pdo, string $table_name, AddressFactory $address_factory = null )
 	{
-		$this->address_factory = $address_factory ?: new AddressFactory;
+		$this->address_factory = $address_factory ?: new AddressFactory( PdoAddress::class );
 
 		$sql = "SELECT " . implode(",", static::$DB_FIELDS) ."
 		FROM {$table_name}
-		WHERE id = :id";
+		WHERE id = :id
+		LIMIT 1";
 
 		$this->stmt = $pdo->prepare( $sql );
-		$this->stmt->setFetchMode(\PDO::FETCH_CLASS, PdoAddress::class);
 	}
 
 
@@ -46,6 +46,7 @@ class PdoAddressFactory
 		if (!$this->stmt->execute(['id' => $id]))
 			throw new \RuntimeException("Could not execute SELECT Address PDOStatement");
 
-		return $this->stmt->fetch();
+		$pdo_address_array = $this->stmt->fetch(\PDO::FETCH_ASSOC);
+		return ($this->address_factory)($pdo_address_array);
 	}
 }
