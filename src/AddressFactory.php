@@ -77,7 +77,8 @@ class AddressFactory
                 ->setCountry(  $raw['country'])
                 ->setType(     $raw['type']);
 
-
+        foreach($address_data as $field => $value)                     
+            $address->{$field} = $value;
 
         return $address_provider;
     }
