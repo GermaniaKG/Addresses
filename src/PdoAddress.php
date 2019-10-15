@@ -18,4 +18,13 @@ class PdoAddress extends Address implements PdoAddressInterface
 	}
 
 
+	/**
+	 * @param int $id
+	 */
+	public function setId( $id ) : self
+	{
+		$this->id = $id;
+		return $this;
+	}
+
 }
